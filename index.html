@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 2px;
+        margin: 2px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      body,
+      div {
+        display: flex;
+        flex-direction: column;
+      }
+      body {
+        width: 50%;
+      }
+      ul {
+        list-style: none;
+      }
+
+      .strikeout {
+        text-decoration: line-through;
+      }
+      .priority {
+        color: goldenrod;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="shopping-list" style="display: flex; flex-direction: column">
+      <div class="header">
+        <h1>{{header || 'Welcome'.toLocaleUpperCase()}}</h1>
+        <button v-if="editing" @click="doEdit(false)" class="btn btn-cancel">
+          Cancel
+        </button>
+        <button v-else="editing" @click="doEdit(true)" class="btn btn-primary">
+          Add Item
+        </button>
+      </div>
+
+      <div v-if="editing" class="add-item-form">
+        <input
+          type="text"
+          @keyup.enter="saveItem"
+          v-model="newItem"
+          placeholder="Add an Item"
+        />
+        <label for="">
+          <input type="checkbox" v-model="newItemHighPriority" />
+          High Priority
+        </label>
+        <button
+          class="btn btn-primary"
+          :disabled="newItem.length < 5"
+          @click="saveItem"
+        >
+          Save Item
+        </button>
+      </div>
+
+      <!-- <select id="">
+        <option v-for="item in items" :key="item.id" value="item.label">
+          {{item.label}}
+        </option>
+      </select> -->
+
+      <p v-if="items.length==0">Nice job! You've bought all your items!</p>
+
+      <ul>
+        <li
+          v-for="(item) in items"
+          :key="item.id"
+          :class="{strikeout: item.purchased, priority: item.highPriority}"
+        >
+          {{item.id}}- {{item.label}}
+        </li>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+      const shoppingListApp = Vue.createApp({
+        data() {
+          return {
+            header: "Shopping list App",
+            editing: false,
+            newItem: "",
+            newItemHighPriority: false,
+            items: [
+              {
+                id: 1,
+                label: "10 party hats",
+                purchased: true,
+                highPriority: false,
+              },
+              {
+                id: 2,
+                label: "2 board games",
+                purchased: true,
+                highPriority: true,
+              },
+              {
+                id: 3,
+                label: "20 cups",
+                purchased: false,
+                highPriority: false,
+              },
+            ],
+            iceCreamFlavors: [],
+          };
+        },
+        methods: {
+          saveItem() {
+            this.items.push({ id: this.items.length + 1, label: this.newItem });
+            this.newItem = "";
+          },
+          doEdit(flag) {
+            this.editing = flag;
+          },
+        },
+      }).mount("#shopping-list");
+    </script>
+  </body>
+</html>
