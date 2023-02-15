@@ -8,20 +8,6 @@
   </head>
   <body>
     <script src="https://unpkg.com/vue@3"></script>
-    <div id="app">
-      <h1>VueJS component fundamentals</h1>
-      <click-counter></click-counter>
-      <click-counter></click-counter>
-      <click-counter></click-counter>
-      <click-counter></click-counter>
-      <div class="plans" style="padding: 6px 0">
-        <plan name="The Hacker"></plan>
-        <plan name="The Single"></plan>
-        <plan name="The Curious"></plan>
-        <plan name="The Addict"></plan>
-      </div>
-    </div>
-
     <!-- Components -->
     <script type="text/x-template" id="click-counter-template">
       <button @click="count++"> the count is: {{count}}</button>
@@ -34,6 +20,17 @@
         </div>
       </div>
     </script>
+    <!-- ##### -->
+    <div id="app">
+      <h1>VueJS component fundamentals</h1>
+      <click-counter></click-counter>
+      <click-counter></click-counter>
+      <click-counter></click-counter>
+      <click-counter></click-counter>
+      <div class="plans" style="padding: 6px 0">
+        <plan v-for="plan in plans" :name="plan"></plan>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>

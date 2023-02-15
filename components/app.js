@@ -9,6 +9,11 @@ Vue.createApp({})
   })
   .component("plan", {
     template: '#plan-template',
+    data() {
+      return {
+        plans: ['The Hacker', 'The Curious', 'The Addict']
+      }
+    },
     props: ['name']
   })
   .mount("#app");
