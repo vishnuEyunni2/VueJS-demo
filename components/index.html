@@ -14,9 +14,25 @@
       <click-counter></click-counter>
       <click-counter></click-counter>
       <click-counter></click-counter>
+      <div class="plans" style="padding: 6px 0">
+        <plan name="The Hacker"></plan>
+        <plan name="The Single"></plan>
+        <plan name="The Curious"></plan>
+        <plan name="The Addict"></plan>
+      </div>
     </div>
+
+    <!-- Components -->
     <script type="text/x-template" id="click-counter-template">
-      <button @click="count++">{{count}}</button>
+      <button @click="count++"> the count is: {{count}}</button>
+    </script>
+
+    <script type="text/x-template" id="plan-template">
+      <div class="plan">
+        <div class="description">
+          <span class="title">{{name}}</span>
+        </div>
+      </div>
     </script>
     <script src="app.js"></script>
   </body>
