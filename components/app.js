@@ -5,28 +5,23 @@ let PlanComponent = {
   }
 }
 
-Vue.createApp({
+let PlanPickerComponent = {
+  components: { plan: PlanComponent },
+  template: '#plan-picker-template',
   data() {
     return {
+      plans: ['The Hacker', 'The Curious', 'The Addict']
+    }
+  }
+}
 
-    }
-  },
-})
-  .component("click-counter", {
-    template: '#click-counter-template',
-    data() {
-      return {
-        count: 0,
-      };
-    },
-  })
-  .component("plan-picker", {
-    components: { plan: PlanComponent },
-    template: '#plan-picker-template',
-    data() {
-      return {
-        plans: ['The Hacker', 'The Curious', 'The Addict']
-      }
-    }
-  })
-  .mount("#app");
+Vue.createApp({
+  components: { PlanPicker: PlanPickerComponent }
+}).component("click-counter", {
+  template: '#click-counter-template',
+  data() {
+    return {
+      count: 0,
+    };
+  }
+}).mount("#app");
