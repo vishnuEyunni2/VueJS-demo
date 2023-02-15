@@ -1,4 +1,10 @@
-Vue.createApp({})
+Vue.createApp({
+  data() {
+    return {
+      plans: ['The Hacker', 'The Curious', 'The Addict']
+    }
+  },
+})
   .component("click-counter", {
     template: '#click-counter-template',
     data() {
@@ -9,11 +15,6 @@ Vue.createApp({})
   })
   .component("plan", {
     template: '#plan-template',
-    data() {
-      return {
-        plans: ['The Hacker', 'The Curious', 'The Addict']
-      }
-    },
     props: ['name']
   })
   .mount("#app");
