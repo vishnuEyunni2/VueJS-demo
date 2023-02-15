@@ -1,7 +1,7 @@
 Vue.createApp({
   data() {
     return {
-      plans: ['The Hacker', 'The Curious', 'The Addict']
+      
     }
   },
 })
@@ -17,6 +17,14 @@ Vue.createApp({
     template: '#plan-template',
     props: {
       name: { type: String, default: 'The Single', required: true },
+    }
+  })
+  .component("plan-picker", {
+    template: '#plan-picker-template',
+    data(){
+      return{
+        plans: ['The Hacker', 'The Curious', 'The Addict']
+      }
     }
   })
   .mount("#app");
