@@ -1,7 +1,14 @@
+let PlanComponent = {
+  template: '#plan-template',
+  props: {
+    name: { type: String, default: 'The Single', required: true },
+  }
+}
+
 Vue.createApp({
   data() {
     return {
-      
+
     }
   },
 })
@@ -13,16 +20,11 @@ Vue.createApp({
       };
     },
   })
-  .component("plan", {
-    template: '#plan-template',
-    props: {
-      name: { type: String, default: 'The Single', required: true },
-    }
-  })
   .component("plan-picker", {
+    components: { plan: PlanComponent },
     template: '#plan-picker-template',
-    data(){
-      return{
+    data() {
+      return {
         plans: ['The Hacker', 'The Curious', 'The Addict']
       }
     }
