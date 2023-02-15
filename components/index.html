@@ -11,20 +11,13 @@
     <div id="app">
       <h1>VueJS component fundamentals</h1>
       <click-counter></click-counter>
+      <click-counter></click-counter>
+      <click-counter></click-counter>
+      <click-counter></click-counter>
     </div>
-    <script>
-      Vue.createApp({})
-        .component("click-counter", {
-          template: `
-         <button @click="count++">{{count}}</button>
-        `,
-          data() {
-            return {
-              count: 0,
-            };
-          },
-        })
-        .mount("#app");
+    <script type="text/x-template" id="click-counter-template">
+      <button @click="count++">{{count}}</button>
     </script>
+    <script src="app.js"></script>
   </body>
 </html>
