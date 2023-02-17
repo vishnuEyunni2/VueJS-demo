@@ -20,3 +20,7 @@ This can be achieved using custom events.
 ### Custom Events
 
 To send a custom event, we need to use a special $emit function.
+The first argument is the name of the event we want to emit.
+The name can be anything you like.
+
+The second argument is the data that is required to be passed along with the event.

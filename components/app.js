@@ -2,16 +2,12 @@ let PlanComponent = {
   template: '#plan-template',
   props: {
     name: { type: String, default: 'The Single', required: true },
-  },
-  data() {
-    return {
-      selected: false
-    }
+    selected: { type: Boolean, default: false }
   },
   methods: {
     select() {
-      alert('this.selected is ' + String(this.selected))
-      this.selected = true
+      // emits to the parent div
+      this.$emit('select', this.name)
     }
   }
 }
@@ -21,7 +17,13 @@ let PlanPickerComponent = {
   template: '#plan-picker-template',
   data() {
     return {
-      plans: ['The Hacker', 'The Curious', 'The Addict']
+      plans: ['The Hacker', 'The Curious', 'The Addict'],
+      selectedPlan: null
+    }
+  },
+  methods: {
+    selectPlan(plan) {
+      this.selectedPlan = plan;
     }
   }
 }
